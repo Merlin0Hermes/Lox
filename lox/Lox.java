@@ -1,6 +1,7 @@
 package com.craftinginterpreters.lox;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 
 public class Lox 
 {
@@ -20,4 +21,12 @@ public class Lox
             runPrompt();
         }
     }
+
+
+    private static void runFile(String path) throws IOException
+    {
+        byte[] bytes = Files.readAllBytes(Paths.get(path));
+        run(new String(bytes, Charset.defaultCharset()));
+    }
+
 }
